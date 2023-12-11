@@ -1,6 +1,6 @@
 _base_ = [
     '../../../../_base_/default_runtime.py',
-    '../../../../_base_/datasets/ap10k.py'
+    '../../../../_base_/datasets/animalpose.py'
 ]
 evaluation = dict(interval=10, metric='mAP', save_best='AP')
 
@@ -25,13 +25,13 @@ log_config = dict(
     ])
 
 channel_cfg = dict(
-    num_output_channels=17,
-    dataset_joints=17,
+    num_output_channels=20,
+    dataset_joints=20,
     dataset_channel=[
-        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,17,18,19],
     ],
     inference_channel=[
-        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19
     ])
 
 # model settings
@@ -127,30 +127,30 @@ val_pipeline = [
 
 test_pipeline = val_pipeline
 
-data_root = 'data/apt36k'
+data_root = 'data/animalpose'
 data = dict(
     samples_per_gpu=64,
-    workers_per_gpu=4,
+    workers_per_gpu=2,
     val_dataloader=dict(samples_per_gpu=32),
     test_dataloader=dict(samples_per_gpu=32),
     train=dict(
-        type='AnimalAP10KDataset',
-        ann_file=f'{data_root}/annotations/apt36k_annotations_train.json',
-        img_prefix=f'{data_root}/data/',
+        type='AnimalPoseDataset',
+        ann_file=f'{data_root}/annotations/animalpose_train.json',
+        img_prefix=f'{data_root}/',
         data_cfg=data_cfg,
         pipeline=train_pipeline,
         dataset_info={{_base_.dataset_info}}),
     val=dict(
-        type='AnimalAP10KDataset',
-        ann_file=f'{data_root}/annotations/apt36k_annotations_val.json',
-        img_prefix=f'{data_root}/data/',
+        type='AnimalPoseDataset',
+        ann_file=f'{data_root}/annotations/animalpose_val.json',
+        img_prefix=f'{data_root}/',
         data_cfg=data_cfg,
         pipeline=val_pipeline,
         dataset_info={{_base_.dataset_info}}),
     test=dict(
-        type='AnimalAP10KDataset',
-        ann_file=f'{data_root}/annotations/apt36k_annotations_test.json',
-        img_prefix=f'{data_root}/data/',
+        type='AnimalPoseDataset',
+        ann_file=f'{data_root}/annotations/animalpose_val.json',
+        img_prefix=f'{data_root}/',
         data_cfg=data_cfg,
         pipeline=test_pipeline,
         dataset_info={{_base_.dataset_info}}),

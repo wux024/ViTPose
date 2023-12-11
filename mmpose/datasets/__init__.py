@@ -7,7 +7,8 @@ from .samplers import DistributedSampler
 from .datasets import (  # isort:skip
     AnimalATRWDataset, AnimalFlyDataset, AnimalHorse10Dataset,
     AnimalLocustDataset, AnimalMacaqueDataset, AnimalPoseDataset,
-    AnimalZebraDataset, Body3DH36MDataset, BottomUpAicDataset,
+    AnimalZebraDataset, AnimalAP10KDataset, AnimalAWADataset,
+    AnimalStandfordExtraDataset, Body3DH36MDataset, BottomUpAicDataset,
     BottomUpCocoDataset, BottomUpCocoWholeBodyDataset,
     BottomUpCrowdPoseDataset, BottomUpMhpDataset, DeepFashionDataset,
     Face300WDataset, FaceAFLWDataset, FaceCocoWholeBodyDataset,

@@ -1,6 +1,6 @@
 _base_ = [
     '../../../../_base_/default_runtime.py',
-    '../../../../_base_/datasets/ap10k.py'
+    '../../../../_base_/datasets/macaque.py'
 ]
 evaluation = dict(interval=10, metric='mAP', save_best='AP')
 
@@ -42,9 +42,9 @@ model = dict(
         type='ViT',
         img_size=(256, 192),
         patch_size=16,
-        embed_dim=384,
-        depth=12,
-        num_heads=12,
+        embed_dim=1024,
+        depth=24,
+        num_heads=16,
         ratio=1,
         use_checkpoint=False,
         mlp_ratio=4,
@@ -53,7 +53,7 @@ model = dict(
     ),
     keypoint_head=dict(
         type='TopdownHeatmapSimpleHead',
-        in_channels=384,
+        in_channels=1024,
         num_deconv_layers=2,
         num_deconv_filters=(256, 256),
         num_deconv_kernels=(4, 4),
@@ -127,30 +127,30 @@ val_pipeline = [
 
 test_pipeline = val_pipeline
 
-data_root = 'data/apt36k'
+data_root = 'data/macaque'
 data = dict(
     samples_per_gpu=64,
-    workers_per_gpu=4,
+    workers_per_gpu=2,
     val_dataloader=dict(samples_per_gpu=32),
     test_dataloader=dict(samples_per_gpu=32),
     train=dict(
-        type='AnimalAP10KDataset',
-        ann_file=f'{data_root}/annotations/apt36k_annotations_train.json',
-        img_prefix=f'{data_root}/data/',
+        type='AnimalMacaqueDataset',
+        ann_file=f'{data_root}/annotations/macaque_train.json',
+        img_prefix=f'{data_root}/images/',
         data_cfg=data_cfg,
         pipeline=train_pipeline,
         dataset_info={{_base_.dataset_info}}),
     val=dict(
-        type='AnimalAP10KDataset',
-        ann_file=f'{data_root}/annotations/apt36k_annotations_val.json',
-        img_prefix=f'{data_root}/data/',
+        type='AnimalMacaqueDataset',
+        ann_file=f'{data_root}/annotations/macaque_test.json',
+        img_prefix=f'{data_root}/images/',
         data_cfg=data_cfg,
         pipeline=val_pipeline,
         dataset_info={{_base_.dataset_info}}),
     test=dict(
-        type='AnimalAP10KDataset',
-        ann_file=f'{data_root}/annotations/apt36k_annotations_test.json',
-        img_prefix=f'{data_root}/data/',
+        type='AnimalMacaqueDataset',
+        ann_file=f'{data_root}/annotations/macaque_test.json',
+        img_prefix=f'{data_root}/images/',
         data_cfg=data_cfg,
         pipeline=test_pipeline,
         dataset_info={{_base_.dataset_info}}),

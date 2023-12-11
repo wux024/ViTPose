@@ -1,8 +1,8 @@
 _base_ = [
     '../../../../_base_/default_runtime.py',
-    '../../../../_base_/datasets/ap10k.py'
+    '../../../../_base_/datasets/horse10.py'
 ]
-evaluation = dict(interval=10, metric='mAP', save_best='AP')
+evaluation = dict(interval=10, metric='PCK', save_best='PCK')
 
 optimizer = dict(
     type='Adam',
@@ -25,13 +25,17 @@ log_config = dict(
     ])
 
 channel_cfg = dict(
-    num_output_channels=17,
-    dataset_joints=17,
+    num_output_channels=22,
+    dataset_joints=22,
     dataset_channel=[
-        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+        [
+            0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
+            19, 21
+        ],
     ],
     inference_channel=[
-        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        21
     ])
 
 # model settings
@@ -127,30 +131,30 @@ val_pipeline = [
 
 test_pipeline = val_pipeline
 
-data_root = 'data/apt36k'
+data_root = 'data/horse10'
 data = dict(
-    samples_per_gpu=64,
-    workers_per_gpu=4,
+    samples_per_gpu=32,
+    workers_per_gpu=2,
     val_dataloader=dict(samples_per_gpu=32),
     test_dataloader=dict(samples_per_gpu=32),
     train=dict(
-        type='AnimalAP10KDataset',
-        ann_file=f'{data_root}/annotations/apt36k_annotations_train.json',
-        img_prefix=f'{data_root}/data/',
+        type='AnimalHorse10Dataset',
+        ann_file=f'{data_root}/annotations/horse10-train-split3.json',
+        img_prefix=f'{data_root}/',
         data_cfg=data_cfg,
         pipeline=train_pipeline,
         dataset_info={{_base_.dataset_info}}),
     val=dict(
-        type='AnimalAP10KDataset',
-        ann_file=f'{data_root}/annotations/apt36k_annotations_val.json',
-        img_prefix=f'{data_root}/data/',
+        type='AnimalHorse10Dataset',
+        ann_file=f'{data_root}/annotations/horse10-test-split3.json',
+        img_prefix=f'{data_root}/',
         data_cfg=data_cfg,
         pipeline=val_pipeline,
         dataset_info={{_base_.dataset_info}}),
     test=dict(
-        type='AnimalAP10KDataset',
-        ann_file=f'{data_root}/annotations/apt36k_annotations_test.json',
-        img_prefix=f'{data_root}/data/',
+        type='AnimalHorse10Dataset',
+        ann_file=f'{data_root}/annotations/horse10-test-split3.json',
+        img_prefix=f'{data_root}/',
         data_cfg=data_cfg,
         pipeline=test_pipeline,
         dataset_info={{_base_.dataset_info}}),

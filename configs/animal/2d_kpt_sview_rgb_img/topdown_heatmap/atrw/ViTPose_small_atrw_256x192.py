@@ -1,6 +1,6 @@
 _base_ = [
     '../../../../_base_/default_runtime.py',
-    '../../../../_base_/datasets/ap10k.py'
+    '../../../../_base_/datasets/atrw.py'
 ]
 evaluation = dict(interval=10, metric='mAP', save_best='AP')
 
@@ -25,14 +25,12 @@ log_config = dict(
     ])
 
 channel_cfg = dict(
-    num_output_channels=17,
-    dataset_joints=17,
+    num_output_channels=15,
+    dataset_joints=15,
     dataset_channel=[
-        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
     ],
-    inference_channel=[
-        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
-    ])
+    inference_channel=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14])
 
 # model settings
 model = dict(
@@ -127,30 +125,30 @@ val_pipeline = [
 
 test_pipeline = val_pipeline
 
-data_root = 'data/apt36k'
+data_root = 'data/atrw'
 data = dict(
-    samples_per_gpu=64,
+    samples_per_gpu=32,
     workers_per_gpu=4,
     val_dataloader=dict(samples_per_gpu=32),
     test_dataloader=dict(samples_per_gpu=32),
     train=dict(
-        type='AnimalAP10KDataset',
-        ann_file=f'{data_root}/annotations/apt36k_annotations_train.json',
-        img_prefix=f'{data_root}/data/',
+        type='AnimalATRWDataset',
+        ann_file=f'{data_root}/annotations/keypoint_train.json',
+        img_prefix=f'{data_root}/',
         data_cfg=data_cfg,
         pipeline=train_pipeline,
         dataset_info={{_base_.dataset_info}}),
     val=dict(
-        type='AnimalAP10KDataset',
-        ann_file=f'{data_root}/annotations/apt36k_annotations_val.json',
-        img_prefix=f'{data_root}/data/',
+        type='AnimalATRWDataset',
+        ann_file=f'{data_root}/annotations/keypoint_trainval.json',
+        img_prefix=f'{data_root}/',
         data_cfg=data_cfg,
         pipeline=val_pipeline,
         dataset_info={{_base_.dataset_info}}),
     test=dict(
-        type='AnimalAP10KDataset',
-        ann_file=f'{data_root}/annotations/apt36k_annotations_test.json',
-        img_prefix=f'{data_root}/data/',
+        type='AnimalATRWDataset',
+        ann_file=f'{data_root}/annotations/keypoint_val.json',
+        img_prefix=f'{data_root}/',
         data_cfg=data_cfg,
         pipeline=test_pipeline,
         dataset_info={{_base_.dataset_info}}),

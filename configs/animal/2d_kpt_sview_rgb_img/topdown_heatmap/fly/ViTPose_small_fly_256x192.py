@@ -1,8 +1,8 @@
 _base_ = [
     '../../../../_base_/default_runtime.py',
-    '../../../../_base_/datasets/ap10k.py'
+    '../../../../_base_/datasets/fly.py'
 ]
-evaluation = dict(interval=10, metric='mAP', save_best='AP')
+evaluation = dict(interval=10, metric=['PCK', 'AUC', 'EPE'], save_best='AUC')
 
 optimizer = dict(
     type='Adam',
@@ -25,13 +25,17 @@ log_config = dict(
     ])
 
 channel_cfg = dict(
-    num_output_channels=17,
-    dataset_joints=17,
+    num_output_channels=32,
+    dataset_joints=32,
     dataset_channel=[
-        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+        [
+            0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
+            19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
+        ],
     ],
     inference_channel=[
-        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
     ])
 
 # model settings
@@ -104,7 +108,7 @@ train_pipeline = [
         keys=['img', 'target', 'target_weight'],
         meta_keys=[
             'image_file', 'joints_3d', 'joints_3d_visible', 'center', 'scale',
-            'rotation', 'bbox_score', 'flip_pairs'
+            'rotation', 'flip_pairs'
         ]),
 ]
 
@@ -119,38 +123,35 @@ val_pipeline = [
     dict(
         type='Collect',
         keys=['img'],
-        meta_keys=[
-            'image_file', 'center', 'scale', 'rotation', 'bbox_score',
-            'flip_pairs'
-        ]),
+        meta_keys=['image_file', 'center', 'scale', 'rotation', 'flip_pairs']),
 ]
 
 test_pipeline = val_pipeline
 
-data_root = 'data/apt36k'
+data_root = 'data/fly'
 data = dict(
-    samples_per_gpu=64,
-    workers_per_gpu=4,
+    samples_per_gpu=32,
+    workers_per_gpu=2,
     val_dataloader=dict(samples_per_gpu=32),
     test_dataloader=dict(samples_per_gpu=32),
     train=dict(
-        type='AnimalAP10KDataset',
-        ann_file=f'{data_root}/annotations/apt36k_annotations_train.json',
-        img_prefix=f'{data_root}/data/',
+        type='AnimalFlyDataset',
+        ann_file=f'{data_root}/annotations/fly_train.json',
+        img_prefix=f'{data_root}/images/',
         data_cfg=data_cfg,
         pipeline=train_pipeline,
         dataset_info={{_base_.dataset_info}}),
     val=dict(
-        type='AnimalAP10KDataset',
-        ann_file=f'{data_root}/annotations/apt36k_annotations_val.json',
-        img_prefix=f'{data_root}/data/',
+        type='AnimalFlyDataset',
+        ann_file=f'{data_root}/annotations/fly_test.json',
+        img_prefix=f'{data_root}/images/',
         data_cfg=data_cfg,
         pipeline=val_pipeline,
         dataset_info={{_base_.dataset_info}}),
     test=dict(
-        type='AnimalAP10KDataset',
-        ann_file=f'{data_root}/annotations/apt36k_annotations_test.json',
-        img_prefix=f'{data_root}/data/',
+        type='AnimalFlyDataset',
+        ann_file=f'{data_root}/annotations/fly_test.json',
+        img_prefix=f'{data_root}/images/',
         data_cfg=data_cfg,
         pipeline=test_pipeline,
         dataset_info={{_base_.dataset_info}}),
