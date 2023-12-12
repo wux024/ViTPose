@@ -34,85 +34,85 @@ dataset_info = dict(
             name='mouth_end_right',
             id=3,
             color=[0, 255, 0],
-            type='lower',
-            swap=''),
+            type='upper',
+            swap='mouth_end_left'),
         4:
         dict(
             name='mouth_end_left',
             id=4,
             color=[0, 255, 0],
-            type='lower',
-            swap=''),
+            type='upper',
+            swap='mouth_end_right'),
         5:
         dict(
             name='right_eye',
             id=5,
             color=[0, 255, 0],
-            type='lower',
-            swap=''),
+            type='upper',
+            swap='left_eye'),
         6:
         dict(
             name='right_earbase',
             id=6,
             color=[51, 153, 255],
-            type='lower',
-            swap=''),
+            type='upper',
+            swap='left_earbase'),
         7:
         dict(
             name='right_earend',
             id=7,
             color=[0, 255, 0],
-            type='lower',
-            swap=''),
+            type='upper',
+            swap='left_earend'),
         8:
         dict(
             name='right_antler_base',
             id=8,
             color=[0, 255, 0],
-            type='lower',
-            swap=''),
+            type='upper',
+            swap='left_antler_base'),
         9:
         dict(
             name='right_antler_end',
             id=9,
             color=[0, 255, 0],
-            type='lower',
-            swap=''),
+            type='upper',
+            swap='left_antler_end'),
         10:
         dict(
             name='left_eye',
             id=10,
             color=[0, 255, 0],
-            type='lower',
-            swap=''),
+            type='upper',
+            swap='right_eye'),
         11:
         dict(
             name='left_earbase',
             id=11,
             color=[0, 255, 0],
-            type='lower',
-            swap=''),
+            type='upper',
+            swap='right_earbase'),
         12:
         dict(
             name='left_earend',
             id=12,
             color=[0, 255, 0],
             type='upper',
-            swap=''),
+            swap='right_earend'),
         13:
         dict(
             name='left_antler_base',
             id=13,
             color=[0, 255, 0],
             type='upper',
-            swap=''),
+            swap='right_antler_base'),
         14:
         dict(
             name='left_antler_end',
             id=14,
             color=[0, 255, 0],
             type='upper',
-            swap=''),
+            swap='right_antler_end'),
         15:
         dict(
             name='neck_base',
@@ -146,7 +146,7 @@ dataset_info = dict(
             name='back_base',
             id=19,
             color=[0, 255, 0],
-            type='upper',
+            type='lower',
             swap=''),
         20:
         dict(
@@ -167,119 +167,119 @@ dataset_info = dict(
             name='tail_base',
             id=12,
             color=[0, 255, 0],
-            type='upper',
+            type='lower',
             swap=''),
         23:
         dict(
             name='tail_end',
             id=13,
             color=[0, 255, 0],
-            type='upper',
+            type='lower',
             swap=''),
         24:
         dict(
             name='front_left_thai',
             id=14,
             color=[0, 255, 0],
-            type='upper',
-            swap=''),
+            type='lower',
+            swap='front_right_thai'),
         25:
         dict(
             name='front_left_knee',
             id=15,
             color=[0, 255, 0],
-            type='upper',
-            swap=''),
+            type='lower',
+            swap='front_right_knee'),
         26:
         dict(
             name='front_left_paw',
             id=16,
             color=[0, 255, 0],
-            type='upper',
-            swap=''),
+            type='lower',
+            swap='front_right_paw'),
         27:
         dict(
             name='front_right_thai',
             id=17,
             color=[0, 255, 0],
-            type='upper',
-            swap=''),
+            type='lower',
+            swap='front_left_thai'),
         28:
         dict(
             name='front_right_paw',
             id=18,
             color=[0, 255, 0],
-            type='upper',
-            swap=''),
+            type='lower',
+            swap='front_left_paw'),
         29:
         dict(
             name='front_right_knee',
             id=19,
             color=[0, 255, 0],
-            type='upper',
-            swap=''),
+            type='lower',
+            swap='front_left_knee'),
         30:
         dict(
             name='back_left_knee',
             id=10,
             color=[0, 255, 0],
             type='lower',
-            swap=''),
+            swap='back_right_knee'),
         31:
         dict(
             name='back_left_paw',
             id=11,
             color=[0, 255, 0],
             type='lower',
-            swap=''),
+            swap='back_right_paw'),
         32:
         dict(
             name='back_left_thai',
             id=12,
             color=[0, 255, 0],
-            type='upper',
-            swap=''),
+            type='lower',
+            swap='back_right_thai'),
         33:
         dict(
             name='back_right_thai',
             id=13,
             color=[0, 255, 0],
-            type='upper',
-            swap=''),
+            type='lower',
+            swap='back_left_thai'),
         34:
         dict(
             name='back_right_paw',
             id=14,
             color=[0, 255, 0],
-            type='upper',
-            swap=''),
+            type='lower',
+            swap='back_left_paw'),
         35:
         dict(
             name='back_right_knee',
             id=15,
             color=[0, 255, 0],
-            type='upper',
-            swap=''),
+            type='lower',
+            swap='back_left_knee'),
         36:
         dict(
             name='belly_bottom',
             id=16,
             color=[0, 255, 0],
-            type='upper',
+            type='lower',
             swap=''),
         37:
         dict(
             name='body_middle_right',
             id=17,
             color=[0, 255, 0],
-            type='upper',
+            type='lower',
             swap=''),
         38:
         dict(
             name='body_middle_left',
             id=18,
             color=[0, 255, 0],
-            type='upper',
+            type='lower',
             swap=''),
     },
     skeleton_info={
