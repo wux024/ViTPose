@@ -127,28 +127,28 @@ test_pipeline = val_pipeline
 
 data_root = 'data/atrw'
 data = dict(
-    samples_per_gpu=32,
-    workers_per_gpu=4,
+    samples_per_gpu=64,
+    workers_per_gpu=2,
     val_dataloader=dict(samples_per_gpu=32),
     test_dataloader=dict(samples_per_gpu=32),
     train=dict(
         type='AnimalATRWDataset',
         ann_file=f'{data_root}/annotations/keypoint_train.json',
-        img_prefix=f'{data_root}/',
+        img_prefix=f'{data_root}/data/',
         data_cfg=data_cfg,
         pipeline=train_pipeline,
         dataset_info={{_base_.dataset_info}}),
     val=dict(
         type='AnimalATRWDataset',
         ann_file=f'{data_root}/annotations/keypoint_trainval.json',
-        img_prefix=f'{data_root}/',
+        img_prefix=f'{data_root}/data/',
         data_cfg=data_cfg,
         pipeline=val_pipeline,
         dataset_info={{_base_.dataset_info}}),
     test=dict(
         type='AnimalATRWDataset',
         ann_file=f'{data_root}/annotations/keypoint_val.json',
-        img_prefix=f'{data_root}/',
+        img_prefix=f'{data_root}/data/',
         data_cfg=data_cfg,
         pipeline=test_pipeline,
         dataset_info={{_base_.dataset_info}}),
