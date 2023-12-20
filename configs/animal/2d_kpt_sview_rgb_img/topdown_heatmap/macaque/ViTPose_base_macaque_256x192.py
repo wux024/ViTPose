@@ -131,7 +131,7 @@ test_pipeline = val_pipeline
 data_root = 'data/macaque'
 data = dict(
     samples_per_gpu=64,
-    workers_per_gpu=2,
+    workers_per_gpu=1,
     val_dataloader=dict(samples_per_gpu=32),
     test_dataloader=dict(samples_per_gpu=32),
     train=dict(
