@@ -129,8 +129,8 @@ test_pipeline = val_pipeline
 
 data_root = 'data/apt36k'
 data = dict(
-    samples_per_gpu=64,
-    workers_per_gpu=4,
+    samples_per_gpu=32,
+    workers_per_gpu=1,
     val_dataloader=dict(samples_per_gpu=32),
     test_dataloader=dict(samples_per_gpu=32),
     train=dict(

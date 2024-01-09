@@ -130,7 +130,7 @@ test_pipeline = val_pipeline
 data_root = 'data/animalpose'
 data = dict(
     samples_per_gpu=64,
-    workers_per_gpu=2,
+    workers_per_gpu=1,
     val_dataloader=dict(samples_per_gpu=32),
     test_dataloader=dict(samples_per_gpu=32),
     train=dict(
@@ -149,7 +149,7 @@ data = dict(
         dataset_info={{_base_.dataset_info}}),
     test=dict(
         type='AnimalPoseDataset',
-        ann_file=f'{data_root}/annotations/animalpose_val.json',
+        ann_file=f'{data_root}/annotations/animalpose_test.json',
         img_prefix=f'{data_root}/',
         data_cfg=data_cfg,
         pipeline=test_pipeline,

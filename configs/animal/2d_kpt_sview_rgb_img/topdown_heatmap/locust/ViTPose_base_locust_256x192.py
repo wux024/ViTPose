@@ -131,7 +131,7 @@ test_pipeline = val_pipeline
 data_root = 'data/locust'
 data = dict(
     samples_per_gpu=64,
-    workers_per_gpu=2,
+    workers_per_gpu=1,
     val_dataloader=dict(samples_per_gpu=32),
     test_dataloader=dict(samples_per_gpu=32),
     train=dict(
@@ -143,7 +143,7 @@ data = dict(
         dataset_info={{_base_.dataset_info}}),
     val=dict(
         type='AnimalLocustDataset',
-        ann_file=f'{data_root}/annotations/locust_test.json',
+        ann_file=f'{data_root}/annotations/locust_val.json',
         img_prefix=f'{data_root}/images/',
         data_cfg=data_cfg,
         pipeline=val_pipeline,

@@ -125,7 +125,7 @@ test_pipeline = val_pipeline
 data_root = 'data/zebra'
 data = dict(
     samples_per_gpu=64,
-    workers_per_gpu=2,
+    workers_per_gpu=1,
     val_dataloader=dict(samples_per_gpu=32),
     test_dataloader=dict(samples_per_gpu=32),
     train=dict(
@@ -137,7 +137,7 @@ data = dict(
         dataset_info={{_base_.dataset_info}}),
     val=dict(
         type='AnimalZebraDataset',
-        ann_file=f'{data_root}/annotations/zebra_test.json',
+        ann_file=f'{data_root}/annotations/zebra_val.json',
         img_prefix=f'{data_root}/images/',
         data_cfg=data_cfg,
         pipeline=val_pipeline,

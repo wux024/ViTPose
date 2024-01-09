@@ -142,7 +142,7 @@ data = dict(
         dataset_info={{_base_.dataset_info}}),
     val=dict(
         type='AnimalMacaqueDataset',
-        ann_file=f'{data_root}/annotations/macaque_test.json',
+        ann_file=f'{data_root}/annotations/macaque_val.json',
         img_prefix=f'{data_root}/images/',
         data_cfg=data_cfg,
         pipeline=val_pipeline,
@@ -155,3 +155,4 @@ data = dict(
         pipeline=test_pipeline,
         dataset_info={{_base_.dataset_info}}),
 )
+

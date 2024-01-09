@@ -126,7 +126,7 @@ val_pipeline = [
 
 test_pipeline = val_pipeline
 
-data_root = 'data/awa2'
+data_root = 'data/awa'
 data = dict(
     samples_per_gpu=32,
     workers_per_gpu=4,
@@ -134,21 +134,21 @@ data = dict(
     test_dataloader=dict(samples_per_gpu=32),
     train=dict(
         type='AnimalAWADataset',
-        ann_file=f'{data_root}/annotations/awa2_annotations_train.json',
+        ann_file=f'{data_root}/annotations/awa_train.json',
         img_prefix=f'{data_root}/data/',
         data_cfg=data_cfg,
         pipeline=train_pipeline,
         dataset_info={{_base_.dataset_info}}),
     val=dict(
         type='AnimalAWADataset',
-        ann_file=f'{data_root}/annotations/awa2_annotations_val.json',
+        ann_file=f'{data_root}/annotations/awa_val.json',
         img_prefix=f'{data_root}/data/',
         data_cfg=data_cfg,
         pipeline=val_pipeline,
         dataset_info={{_base_.dataset_info}}),
     test=dict(
         type='AnimalAWADataset',
-        ann_file=f'{data_root}/annotations/awa2_annotations_test.json',
+        ann_file=f'{data_root}/annotations/awa_test.json',
         img_prefix=f'{data_root}/data/',
         data_cfg=data_cfg,
         pipeline=test_pipeline,

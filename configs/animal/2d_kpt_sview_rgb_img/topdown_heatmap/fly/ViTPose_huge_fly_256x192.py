@@ -130,8 +130,8 @@ test_pipeline = val_pipeline
 
 data_root = 'data/fly'
 data = dict(
-    samples_per_gpu=32,
-    workers_per_gpu=2,
+    samples_per_gpu=64,
+    workers_per_gpu=1,
     val_dataloader=dict(samples_per_gpu=32),
     test_dataloader=dict(samples_per_gpu=32),
     train=dict(
@@ -143,7 +143,7 @@ data = dict(
         dataset_info={{_base_.dataset_info}}),
     val=dict(
         type='AnimalFlyDataset',
-        ann_file=f'{data_root}/annotations/fly_test.json',
+        ann_file=f'{data_root}/annotations/fly_val.json',
         img_prefix=f'{data_root}/images/',
         data_cfg=data_cfg,
         pipeline=val_pipeline,

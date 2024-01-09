@@ -133,27 +133,27 @@ test_pipeline = val_pipeline
 
 data_root = 'data/horse10'
 data = dict(
-    samples_per_gpu=32,
-    workers_per_gpu=2,
+    samples_per_gpu=64,
+    workers_per_gpu=4,
     val_dataloader=dict(samples_per_gpu=32),
     test_dataloader=dict(samples_per_gpu=32),
     train=dict(
         type='AnimalHorse10Dataset',
-        ann_file=f'{data_root}/annotations/horse10-train-split3.json',
+        ann_file=f'{data_root}/annotations/horse10_train.json',
         img_prefix=f'{data_root}/',
         data_cfg=data_cfg,
         pipeline=train_pipeline,
         dataset_info={{_base_.dataset_info}}),
     val=dict(
         type='AnimalHorse10Dataset',
-        ann_file=f'{data_root}/annotations/horse10-test-split3.json',
+        ann_file=f'{data_root}/annotations/horse10_val.json',
         img_prefix=f'{data_root}/',
         data_cfg=data_cfg,
         pipeline=val_pipeline,
         dataset_info={{_base_.dataset_info}}),
     test=dict(
         type='AnimalHorse10Dataset',
-        ann_file=f'{data_root}/annotations/horse10-test-split3.json',
+        ann_file=f'{data_root}/annotations/horse10_test.json',
         img_prefix=f'{data_root}/',
         data_cfg=data_cfg,
         pipeline=test_pipeline,
