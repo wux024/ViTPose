@@ -1,6 +1,6 @@
 _base_ = [
     '../../../../_base_/default_runtime.py',
-    '../../../../_base_/datasets/locust.py'
+    '../../../../_base_/datasets/ap10k.py'
 ]
 evaluation = dict(interval=10, metric=['PCK', 'AUC', 'EPE'], save_best='AUC')
 
@@ -25,19 +25,16 @@ log_config = dict(
     ])
 
 channel_cfg = dict(
-    num_output_channels=35,
-    dataset_joints=35,
+    num_output_channels=23,
+    dataset_joints=23,
     dataset_channel=[
-        [
-            0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
-            19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34
-        ],
+        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+         17, 18, 19, 20, 21, 22],
     ],
     inference_channel=[
-        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
-        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+        17, 18, 19, 20, 21, 22
     ])
-
 # model settings
 model = dict(
     type='TopDown',
@@ -46,7 +43,7 @@ model = dict(
         type='ViT',
         img_size=(256, 192),
         patch_size=16,
-        embed_dim=768,
+        embed_dim=384,
         depth=12,
         num_heads=12,
         ratio=1,
@@ -57,15 +54,15 @@ model = dict(
     ),
     keypoint_head=dict(
         type='TopdownHeatmapSimpleHead',
-        in_channels=768,
+        in_channels=384,
         num_deconv_layers=2,
         num_deconv_filters=(256, 256),
         num_deconv_kernels=(4, 4),
         extra=dict(final_conv_kernel=1, ),
         out_channels=channel_cfg['num_output_channels'],
         loss_keypoint=dict(type='JointsMSELoss', use_target_weight=True)),
-        train_cfg=dict(),
-        test_cfg=dict(
+    train_cfg=dict(),
+    test_cfg=dict(
         flip_test=True,
         post_process='default',
         shift_heatmap=True,
@@ -128,29 +125,29 @@ val_pipeline = [
 
 test_pipeline = val_pipeline
 
-data_root = 'data/locust'
+data_root = 'data/animal_kingdom'
 data = dict(
-    samples_per_gpu=64,
+    samples_per_gpu=32,
     workers_per_gpu=1,
     val_dataloader=dict(samples_per_gpu=32),
     test_dataloader=dict(samples_per_gpu=32),
     train=dict(
-        type='AnimalLocustDataset',
-        ann_file=f'{data_root}/annotations/locust_train.json',
+        type='AnimalKingdomDataset',
+        ann_file=f'{data_root}/annotations/train.json',
         img_prefix=f'{data_root}/images/',
         data_cfg=data_cfg,
         pipeline=train_pipeline,
         dataset_info={{_base_.dataset_info}}),
     val=dict(
-        type='AnimalLocustDataset',
-        ann_file=f'{data_root}/annotations/locust_val.json',
+        type='AnimalKingdomDataset',
+        ann_file=f'{data_root}/annotations/val.json',
         img_prefix=f'{data_root}/images/',
         data_cfg=data_cfg,
         pipeline=val_pipeline,
         dataset_info={{_base_.dataset_info}}),
     test=dict(
-        type='AnimalLocustDataset',
-        ann_file=f'{data_root}/annotations/locust_test.json',
+        type='AnimalKingdomDataset',
+        ann_file=f'{data_root}/annotations/test.json',
         img_prefix=f'{data_root}/images/',
         data_cfg=data_cfg,
         pipeline=test_pipeline,

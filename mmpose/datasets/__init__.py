@@ -8,7 +8,8 @@ from .datasets import (  # isort:skip
     AnimalATRWDataset, AnimalFlyDataset, AnimalHorse10Dataset,
     AnimalLocustDataset, AnimalMacaqueDataset, AnimalPoseDataset,
     AnimalZebraDataset, AnimalAP10KDataset, AnimalAWADataset,
-    AnimalStandfordExtraDataset, Body3DH36MDataset, BottomUpAicDataset,
+    AnimalStandfordExtraDataset, AnimalKingdomDataset,
+    Body3DH36MDataset, BottomUpAicDataset,
     BottomUpCocoDataset, BottomUpCocoWholeBodyDataset,
     BottomUpCrowdPoseDataset, BottomUpMhpDataset, DeepFashionDataset,
     Face300WDataset, FaceAFLWDataset, FaceCocoWholeBodyDataset,
@@ -37,7 +38,8 @@ __all__ = [
     'FaceWFLWDataset', 'FaceCOFWDataset', 'FaceCocoWholeBodyDataset',
     'Body3DH36MDataset', 'AnimalHorse10Dataset', 'AnimalMacaqueDataset',
     'AnimalFlyDataset', 'AnimalLocustDataset', 'AnimalZebraDataset',
-    'AnimalATRWDataset', 'AnimalPoseDataset', 'TopDownH36MDataset',
-    'TopDownPoseTrack18VideoDataset', 'build_dataloader', 'build_dataset',
-    'Compose', 'DistributedSampler', 'DATASETS', 'PIPELINES', 'DatasetInfo'
+    'AnimalATRWDataset', 'AnimalPoseDataset', 'AnimalKingdomDataset',
+    'TopDownH36MDataset', 'TopDownPoseTrack18VideoDataset', 'build_dataloader',
+    'build_dataset', 'Compose', 'DistributedSampler',
+    'DATASETS', 'PIPELINES', 'DatasetInfo'
 ]

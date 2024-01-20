@@ -9,10 +9,11 @@ from .animal_pose_dataset import AnimalPoseDataset
 from .animal_zebra_dataset import AnimalZebraDataset
 from .animal_standfordextra_dataset import AnimalStandfordExtraDataset
 from .animal_awa_dataset import AnimalAWADataset
+from .animal_kingdom_dataset import AnimalKingdomDataset
 
 __all__ = [
     'AnimalHorse10Dataset', 'AnimalMacaqueDataset', 'AnimalFlyDataset',
     'AnimalLocustDataset', 'AnimalZebraDataset', 'AnimalATRWDataset',
     'AnimalPoseDataset', 'AnimalAP10KDataset', 'AnimalAWADataset',
-    'AnimalStandfordExtraDataset'
+    'AnimalStandfordExtraDataset', 'AnimalKingdomDataset'
 ]

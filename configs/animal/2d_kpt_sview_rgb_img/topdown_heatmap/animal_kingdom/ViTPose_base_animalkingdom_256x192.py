@@ -1,6 +1,6 @@
 _base_ = [
     '../../../../_base_/default_runtime.py',
-    '../../../../_base_/datasets/locust.py'
+    '../../../../_base_/datasets/animal_kingdom.py'
 ]
 evaluation = dict(interval=10, metric=['PCK', 'AUC', 'EPE'], save_best='AUC')
 
@@ -25,17 +25,15 @@ log_config = dict(
     ])
 
 channel_cfg = dict(
-    num_output_channels=35,
-    dataset_joints=35,
+    num_output_channels=23,
+    dataset_joints=23,
     dataset_channel=[
-        [
-            0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
-            19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34
-        ],
+        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+         17, 18, 19, 20, 21, 22],
     ],
     inference_channel=[
-        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
-        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+        17, 18, 19, 20, 21, 22
     ])
 
 # model settings
@@ -128,29 +126,29 @@ val_pipeline = [
 
 test_pipeline = val_pipeline
 
-data_root = 'data/locust'
+data_root = 'data/animal_kingdom'
 data = dict(
-    samples_per_gpu=64,
+    samples_per_gpu=32,
     workers_per_gpu=1,
     val_dataloader=dict(samples_per_gpu=32),
     test_dataloader=dict(samples_per_gpu=32),
     train=dict(
-        type='AnimalLocustDataset',
-        ann_file=f'{data_root}/annotations/locust_train.json',
+        type='AnimalKingdomDataset',
+        ann_file=f'{data_root}/annotations/train.json',
         img_prefix=f'{data_root}/images/',
         data_cfg=data_cfg,
         pipeline=train_pipeline,
         dataset_info={{_base_.dataset_info}}),
     val=dict(
-        type='AnimalLocustDataset',
-        ann_file=f'{data_root}/annotations/locust_val.json',
+        type='AnimalKingdomDataset',
+        ann_file=f'{data_root}/annotations/val.json',
         img_prefix=f'{data_root}/images/',
         data_cfg=data_cfg,
         pipeline=val_pipeline,
         dataset_info={{_base_.dataset_info}}),
     test=dict(
-        type='AnimalLocustDataset',
-        ann_file=f'{data_root}/annotations/locust_test.json',
+        type='AnimalKingdomDataset',
+        ann_file=f'{data_root}/annotations/test.json',
         img_prefix=f'{data_root}/images/',
         data_cfg=data_cfg,
         pipeline=test_pipeline,

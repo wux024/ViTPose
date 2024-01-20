@@ -151,136 +151,136 @@ dataset_info = dict(
         20:
         dict(
             name='back_end',
-            id=10,
+            id=20,
             color=[0, 255, 0],
             type='lower',
             swap=''),
         21:
         dict(
             name='back_middle',
-            id=11,
+            id=21,
             color=[0, 255, 0],
             type='lower',
             swap=''),
         22:
         dict(
             name='tail_base',
-            id=12,
+            id=22,
             color=[0, 255, 0],
             type='lower',
             swap=''),
         23:
         dict(
             name='tail_end',
-            id=13,
+            id=23,
             color=[0, 255, 0],
             type='lower',
             swap=''),
         24:
         dict(
             name='front_left_thai',
-            id=14,
+            id=24,
             color=[0, 255, 0],
             type='lower',
             swap='front_right_thai'),
         25:
         dict(
             name='front_left_knee',
-            id=15,
+            id=25,
             color=[0, 255, 0],
             type='lower',
             swap='front_right_knee'),
         26:
         dict(
             name='front_left_paw',
-            id=16,
+            id=26,
             color=[0, 255, 0],
             type='lower',
             swap='front_right_paw'),
         27:
         dict(
             name='front_right_thai',
-            id=17,
+            id=27,
             color=[0, 255, 0],
             type='lower',
             swap='front_left_thai'),
         28:
         dict(
             name='front_right_paw',
-            id=18,
+            id=28,
             color=[0, 255, 0],
             type='lower',
             swap='front_left_paw'),
         29:
         dict(
             name='front_right_knee',
-            id=19,
+            id=29,
             color=[0, 255, 0],
             type='lower',
             swap='front_left_knee'),
         30:
         dict(
             name='back_left_knee',
-            id=10,
+            id=30,
             color=[0, 255, 0],
             type='lower',
             swap='back_right_knee'),
         31:
         dict(
             name='back_left_paw',
-            id=11,
+            id=31,
             color=[0, 255, 0],
             type='lower',
             swap='back_right_paw'),
         32:
         dict(
             name='back_left_thai',
-            id=12,
+            id=32,
             color=[0, 255, 0],
             type='lower',
             swap='back_right_thai'),
         33:
         dict(
             name='back_right_thai',
-            id=13,
+            id=33,
             color=[0, 255, 0],
             type='lower',
             swap='back_left_thai'),
         34:
         dict(
             name='back_right_paw',
-            id=14,
+            id=34,
             color=[0, 255, 0],
             type='lower',
             swap='back_left_paw'),
         35:
         dict(
             name='back_right_knee',
-            id=15,
+            id=35,
             color=[0, 255, 0],
             type='lower',
             swap='back_left_knee'),
         36:
         dict(
             name='belly_bottom',
-            id=16,
+            id=36,
             color=[0, 255, 0],
             type='lower',
             swap=''),
         37:
         dict(
             name='body_middle_right',
-            id=17,
+            id=37,
             color=[0, 255, 0],
             type='lower',
-            swap=''),
+            swap='body_middle_left'),
         38:
         dict(
             name='body_middle_left',
-            id=18,
+            id=38,
             color=[0, 255, 0],
             type='lower',
-            swap=''),
+            swap='body_middle_right'),
     },
     skeleton_info={
         0: dict(link=('left_eye', 'right_eye'), id=0, color=[0, 255, 0]),
