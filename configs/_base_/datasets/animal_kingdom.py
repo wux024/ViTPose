@@ -1,5 +1,5 @@
 dataset_info = dict(
-    dataset_name='horse10',
+    dataset_name='Animal Kingdom',
     paper_info=dict(
         author='Mathis, Alexander and Biasi, Thomas and '
         'Schneider, Steffen and '
